@@ -4,7 +4,6 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 import time
-import xlwings as xw
 import os
 import datetime as dt 
 from sklearn.linear_model import LinearRegression
