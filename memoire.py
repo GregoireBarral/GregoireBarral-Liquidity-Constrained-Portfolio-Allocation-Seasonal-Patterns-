@@ -15,16 +15,14 @@ import plotly.subplots as sp
 import polars as pl
 
 #Import our own library built for the need of the paper
-from Module.ILLIQ_app import illiquidity_function as illiq
 
-from Module import (
-    illiquidity_function as illiq,
-    scenario as sce,
-    lcapm_class as lcapm,
-    VaR_module as var,
-    efficient_frontier as ef,
-    LinarRagression as linreg
-)
+from Module.ILLIQ_app import illiquidity_function as illiq
+from Module import illiquidity_function as illiq
+from Module import scenario as sce
+from Module import lcapm_class as lcapm
+from Module import VaR_module as var
+from Module import efficient_frontier as ef
+from Module import LinarRagression as linreg
 
 
 st.set_page_config(
