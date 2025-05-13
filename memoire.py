@@ -1,10 +1,10 @@
-import yfinance as yf
-
+import yfinance as yf 
 import pandas as pd 
 import numpy as np 
 import plotly.graph_objects as go
 import plotly.express as px
 import time
+import xlwings 
 import os
 import datetime as dt 
 from sklearn.linear_model import LinearRegression
@@ -16,13 +16,13 @@ import polars as pl
 
 #Import our own library built for the need of the paper
 
+from ILLIQ_app import illiquidity_function as illiq
+from backtesting import scenario as sce
+from LCAPM import lcapm_class as lcapm
+from VaR import VaR_module as var
+from efficient_frontier import efficient_frontier as ef 
+from linear_regression import LinarRagression as linreg
 
-from Module import illiquidity_function as illiq
-from Module import scenario as sce
-from Module import lcapm_class as lcapm
-from Module import VaR_module as var
-from Module import efficient_frontier as ef
-from Module import LinarRagression as linreg
 
 
 st.set_page_config(
@@ -32,7 +32,7 @@ st.set_page_config(
 )
 #Search for the different inputs of the table : 
 
-path_directory = "data"
+path_directory = r"C:\Users\grego\Documents\python"
 
 #file that contain the information about the asset prices:
 path_file = os.path.join(path_directory,"test.xlsx")
@@ -43,14 +43,12 @@ path_file = os.path.join(path_directory,"test.xlsx")
 
 @st.cache_data
 
-def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
+def get_riskfree(link = r"C:\Users\grego\OneDrive\Bureau\Mémoire article de recherche\data quanti\risk_free_rate.xlsx"):
 
     """
      read and store the data in the streamlit app   
     """
-    read = pd.read_excel(link, sheet_name="Daily")
-
-    read = pl.DataFrame(read)
+    read = pl.read_excel(link, sheet_name="Daily")
 
     # treat the data and handle the nan / null values from the table
 
@@ -62,20 +60,20 @@ def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
 @st.cache_data
 def get_values(path_file):
 
-    return  pl.DataFrame(pd.read_excel(path_file))
+    return  pl.read_excel(path_file)
 
 @st.cache_data
 def get_volume(path_file):
 
-    return  pl.DataFrame(pd.read_excel(path_file, sheet_name = 'volume'))
+    return  pl.read_excel(path_file, sheet_name = 'volume')
 
 
 
 def get_market_values(path_file):
 
-    values = pd.read_excel(path_file)
+    values = pl.read_excel(path_file)
 
-    market_data = values
+    market_data = values.to_pandas()
 
     market_data = market_data.set_index("Date")
 
@@ -101,7 +99,7 @@ def compute_efficient_frontier(values,num_porfolios):
 
 
 
-
+path_file_USD = os.path.join(path_directory,"Futures indice du dollar US - Données Historiques.csv")
 
 risk_free = get_riskfree()
 
@@ -117,7 +115,11 @@ volume = get_volume(path_file)
 
 market_returns1 = get_market_values(path_file)
 
+daily_traded_usd = pl.read_csv(path_file_USD)["Date","Vol."]
+
 # modify the order of the dataframe about the USD
+
+daily_traded_usd = pl.DataFrame(daily_traded_usd)
 
 #remove NAN values of the dataset:
 values = values.drop_nans()
@@ -220,8 +222,6 @@ tab1, tab2, tab3, tab4, tab5= st.tabs(["illiquidity over time", "portfolio optim
 
 with tab1: 
 
-    
-    st.dataframe(illiq_measure.head())
    
     st.subheader("**Disclaimer**")
     st.write("""
@@ -265,7 +265,8 @@ with tab1:
         "Most Liquid": select_header
     }
 
-   
+    pd.DataFrame(portfolio_options  ).to_clipboard()
+
     #Choose among the available options
     selected_portfolio_label = st.selectbox(
         "Choose between the most liquid or less liquid stocks",
