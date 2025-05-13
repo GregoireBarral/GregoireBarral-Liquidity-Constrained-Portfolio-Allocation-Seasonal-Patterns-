@@ -4,7 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 import time
-import xlwings 
+
 import os
 import datetime as dt 
 from sklearn.linear_model import LinearRegression
@@ -32,7 +32,7 @@ st.set_page_config(
 )
 #Search for the different inputs of the table : 
 
-path_directory = r"C:\Users\grego\Documents\python"
+path_directory = "data"
 
 #file that contain the information about the asset prices:
 path_file = os.path.join(path_directory,"test.xlsx")
@@ -43,7 +43,7 @@ path_file = os.path.join(path_directory,"test.xlsx")
 
 @st.cache_data
 
-def get_riskfree(link = r"C:\Users\grego\OneDrive\Bureau\Mémoire article de recherche\data quanti\risk_free_rate.xlsx"):
+def get_riskfree(link = "data"/"risk_free_rate.xlsx"):
 
     """
      read and store the data in the streamlit app   
