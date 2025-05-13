@@ -117,11 +117,7 @@ volume = get_volume(path_file)
 
 market_returns1 = get_market_values(path_file)
 
-
-
 # modify the order of the dataframe about the USD
-
-
 
 #remove NAN values of the dataset:
 values = values.drop_nans()
