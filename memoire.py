@@ -263,8 +263,7 @@ with tab1:
         "Most Liquid": select_header
     }
 
-    pd.DataFrame(portfolio_options  ).to_clipboard()
-
+   
     #Choose among the available options
     selected_portfolio_label = st.selectbox(
         "Choose between the most liquid or less liquid stocks",
