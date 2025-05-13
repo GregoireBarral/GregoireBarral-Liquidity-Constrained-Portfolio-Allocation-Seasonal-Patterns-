@@ -100,7 +100,7 @@ def compute_efficient_frontier(values,num_porfolios):
 
 path_file_USD = os.path.join(path_directory,"Futures indice du dollar US - Données Historiques.csv")
 
-risk_free = get_riskfree()
+risk_free = get_riskfree(link)
 
 #remove the columns that do not have any information  null values: 
 
