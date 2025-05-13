@@ -17,7 +17,7 @@ import polars as pl
 #Import our own library built for the need of the paper
 
 
-from Module.ILLIQ_app import illiquidity_function
+from Module import illiquidity_function
 from Module import scenario as sce
 from Module import lcapm_class as lcapm
 from Module import VaR_module as var
