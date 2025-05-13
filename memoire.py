@@ -42,7 +42,7 @@ path_file = os.path.join(path_directory,"test.xlsx")
 
 @st.cache_data
 
-def get_riskfree(link = r"data\risk_free_rate.xlsx"):
+def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx"):
 
     """
      read and store the data in the streamlit app   
