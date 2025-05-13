@@ -49,12 +49,14 @@ def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
     """
     read = pd.read_excel(link, sheet_name="Daily")
 
+    read = pl.DataFrame(read)
+
     # treat the data and handle the nan / null values from the table
 
     read = read.with_columns(pl.col("risk_free_rate").drop_nans())
     read = read.with_columns(pl.col("risk_free_rate").drop_nulls())
 
-    return pl.DataFrame(read)
+    return read
 
 @st.cache_data
 def get_values(path_file):
