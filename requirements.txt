@@ -7,6 +7,7 @@ pyarrow  # For handling Parquet files with polars
 # Statistical and scientific functions
 scipy
 statsmodels
+sklearn
 
 # Financial data handling
 yfinance
