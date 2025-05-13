@@ -48,8 +48,9 @@ def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
     """
      read and store the data in the streamlit app   
     """
-    read = pl.read_excel(link, sheet_name="Daily")
+    read = pd.read_excel(link, sheet_name="Daily")
 
+    read = pl.DataFrame(read)
     # treat the data and handle the nan / null values from the table
 
     read = read.with_columns(pl.col("risk_free_rate").drop_nans())
@@ -60,12 +61,12 @@ def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
 @st.cache_data
 def get_values(path_file):
 
-    return  pl.read_excel(path_file)
+    return  pl.DataFrame(pd.DataFrame(pd.read_excel(path_file)))
 
 @st.cache_data
 def get_volume(path_file):
 
-    return  pl.read_excel(path_file, sheet_name = 'volume')
+    return  pl.DataFrame(pd.read_excel(path_file, sheet_name = 'volume'))
 
 
 
@@ -115,7 +116,7 @@ volume = get_volume(path_file)
 
 market_returns1 = get_market_values(path_file)
 
-daily_traded_usd = pl.read_csv(path_file_USD)["Date","Vol."]
+daily_traded_usd = pd.read_csv(path_file_USD)["Date","Vol."]
 
 # modify the order of the dataframe about the USD
 
