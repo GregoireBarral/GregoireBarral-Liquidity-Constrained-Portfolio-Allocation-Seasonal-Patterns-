@@ -31,7 +31,7 @@ st.set_page_config(
 )
 #Search for the different inputs of the table : 
 
-path_directory = r"data"
+path_directory = "data"
 
 #file that contain the information about the asset prices:
 path_file = os.path.join(path_directory,"test.xlsx")
