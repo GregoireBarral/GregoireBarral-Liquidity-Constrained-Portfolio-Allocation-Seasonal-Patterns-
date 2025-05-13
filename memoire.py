@@ -72,9 +72,9 @@ def get_volume(path_file):
 
 def get_market_values(path_file):
 
-    values = pl.read_excel(path_file)
-
-    market_data = values.to_pandas()
+    values = pd.read_excel(path_file)
+    
+    market_data = values
 
     market_data = market_data.set_index("Date")
 
