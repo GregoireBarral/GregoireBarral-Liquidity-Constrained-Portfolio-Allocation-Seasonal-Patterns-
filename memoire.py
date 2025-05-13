@@ -15,12 +15,12 @@ import polars as pl
 
 #Import our own library built for the need of the paper
 
-from ILLIQ_app import illiquidity_function as illiq
-from backtesting import scenario as sce
-from LCAPM import lcapm_class as lcapm
-from VaR import VaR_module as var
-from efficient_frontier import efficient_frontier as ef 
-from linear_regression import LinarRagression as linreg
+from Module.ILLIQ_app import illiquidity_function as illiq
+from Module.backtesting import scenario as sce
+from Module.LCAPM import lcapm_class as lcapm
+from Module.VaR import VaR_module as var
+from Module.efficient_frontier import efficient_frontier as ef 
+from Module.linear_regression import LinarRagression as linreg
 
 
 
