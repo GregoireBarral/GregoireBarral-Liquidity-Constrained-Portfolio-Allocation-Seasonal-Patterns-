@@ -1,0 +1,21 @@
+# Core data handling and manipulation
+pandas
+numpy
+polars
+pyarrow  # For handling Parquet files with polars
+
+# Statistical and scientific functions
+scipy
+statsmodels
+
+# Financial data handling
+yfinance
+
+# Web app framework (Streamlit app)
+streamlit
+
+# Plotting libraries
+plotly
+
+# Excel support (pandas to read/write Excel files)
+openpyxl
