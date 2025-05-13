@@ -61,7 +61,7 @@ def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
 @st.cache_data
 def get_values(path_file):
 
-    return  pl.DataFrame(pd.DataFrame(pd.read_excel(path_file)))
+    return  pl.DataFrame(pd.read_excel(path_file))
 
 @st.cache_data
 def get_volume(path_file):
