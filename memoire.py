@@ -4,7 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 import time
-
+import xlwings 
 import os
 import datetime as dt 
 from sklearn.linear_model import LinearRegression
@@ -32,7 +32,7 @@ st.set_page_config(
 )
 #Search for the different inputs of the table : 
 
-path_directory = "data"
+path_directory = r"C:\Users\grego\Documents\python"
 
 #file that contain the information about the asset prices:
 path_file = os.path.join(path_directory,"test.xlsx")
@@ -43,14 +43,13 @@ path_file = os.path.join(path_directory,"test.xlsx")
 
 @st.cache_data
 
-def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
+def get_riskfree(link = r"C:\Users\grego\OneDrive\Bureau\Mémoire article de recherche\data quanti\risk_free_rate.xlsx"):
 
     """
      read and store the data in the streamlit app   
     """
-    read = pd.read_excel(link, sheet_name="Daily")
+    read = pl.read_excel(link, sheet_name="Daily")
 
-    read = pl.DataFrame(read)
     # treat the data and handle the nan / null values from the table
 
     read = read.with_columns(pl.col("risk_free_rate").drop_nans())
@@ -61,20 +60,20 @@ def get_riskfree(link = os.path.join("data","risk_free_rate.xlsx")):
 @st.cache_data
 def get_values(path_file):
 
-    return  pl.DataFrame(pd.read_excel(path_file))
+    return  pl.read_excel(path_file)
 
 @st.cache_data
 def get_volume(path_file):
 
-    return  pl.DataFrame(pd.read_excel(path_file, sheet_name = 'volume'))
+    return  pl.read_excel(path_file, sheet_name = 'volume')
 
 
 
 def get_market_values(path_file):
 
-    values = pd.read_excel(path_file)
-    
-    market_data = values
+    values = pl.read_excel(path_file)
+
+    market_data = values.to_pandas()
 
     market_data = market_data.set_index("Date")
 
@@ -116,7 +115,7 @@ volume = get_volume(path_file)
 
 market_returns1 = get_market_values(path_file)
 
-daily_traded_usd = pd.read_csv(path_file_USD)[["Date","Vol."]]
+daily_traded_usd = pl.read_csv(path_file_USD)["Date","Vol."]
 
 # modify the order of the dataframe about the USD
 
