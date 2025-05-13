@@ -15,6 +15,7 @@ import plotly.subplots as sp
 import polars as pl
 
 #Import our own library built for the need of the paper
+from Module.ILLIQ_app import illiquidity_function as illiq
 
 from Module import (
     illiquidity_function as illiq,
