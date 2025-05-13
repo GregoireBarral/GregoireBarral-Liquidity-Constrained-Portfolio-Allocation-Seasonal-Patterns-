@@ -221,8 +221,7 @@ tab1, tab2, tab3, tab4, tab5= st.tabs(["illiquidity over time", "portfolio optim
 with tab1: 
 
     
-    st.dataframe(values.head())
-    st.dataframe(volume.head())
+    st.dataframe(monthly_illiq.head())
    
     st.subheader("**Disclaimer**")
     st.write("""
