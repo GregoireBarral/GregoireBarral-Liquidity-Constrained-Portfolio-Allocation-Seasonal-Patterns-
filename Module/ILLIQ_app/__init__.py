@@ -1,1 +1,1 @@
-from .illiquidity_function import *
+from .illiquidity_function import IlliquidityFunction
