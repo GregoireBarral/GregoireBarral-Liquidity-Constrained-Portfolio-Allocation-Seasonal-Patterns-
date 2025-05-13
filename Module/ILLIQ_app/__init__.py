@@ -1,1 +1,1 @@
-from .ILLIQ_app import IlliquidityFunction
+from .ILLIQ_app import illiquidity_function
