@@ -19,7 +19,6 @@ import polars as pl
 class illiquidity_function: 
 
     @staticmethod
-    
     def Get_returns(values:pl.DataFrame):
 
         """
@@ -44,6 +43,7 @@ class illiquidity_function:
 
 
 #comput the daily illiquidity measure of Amihud
+    @staticmethod
     def Get_daily_ILLIQ(returns_securities: pl.DataFrame, volume: pl.DataFrame, values: pl.DataFrame) -> pl.DataFrame:
         """
         Compute the daily Amihud illiquidity measure for each security.
@@ -113,7 +113,7 @@ class illiquidity_function:
 
 
     #def Liquidity_capm(ILLIQ: pl.DataFrame, rf: pl.DataFrame, Beta1: float, Beta2: float,Beta3: float): 
-
+    @staticmethod
     def Get_monthly_illiq(illiq_measure: pl.DataFrame): 
 
         """
@@ -155,7 +155,7 @@ class illiquidity_function:
 
 
         return pl.DataFrame(monthly_illiq)
-    
+    @staticmethod
     def Get_evol_illiq(monthly_illiq:pl.DataFrame): 
 
         """
@@ -190,7 +190,7 @@ class illiquidity_function:
         )
     
         return illiq_evol
-    
+    @staticmethod
     def Average_illiq_versus_returns(return_illiq: pl.DataFrame):
 
         """
