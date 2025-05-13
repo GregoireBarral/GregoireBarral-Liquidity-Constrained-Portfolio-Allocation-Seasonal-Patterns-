@@ -116,7 +116,7 @@ volume = get_volume(path_file)
 
 market_returns1 = get_market_values(path_file)
 
-daily_traded_usd = pd.read_csv(path_file_USD)["Date","Vol."]
+daily_traded_usd = pd.read_csv(path_file_USD)[["Date","Vol."]]
 
 # modify the order of the dataframe about the USD
 
