@@ -357,36 +357,8 @@ with tab1:
     list_not_stationary = stationary_false["Stock"].to_list()
     st.plotly_chart(linreg.adf_evol_illiq(monthly_illiq, list_not_stationary), use_container_width=True)
 
-    st.markdown("***")
-    st.subheader("Asset pricing with liquidity risk")
 
-    st.write("""We will now compute the measure of the returns using the LCAPM of Amihud, using the liquidity 
-             adjusted returns we exptect that the model will present a compensation for the illiquidity carried by the most illiquid
-             ptf
-
-
-""")
-
-
-    st.markdown("""<h6> Get the illiquidity cost Ct to define a normalized measure of illiquidity:</h6>
-                """,
-                unsafe_allow_html = True)
     
-    image = r"C:\Users\grego\Documents\Captures d’écran\market portfolio cap.png"
-    illiq_cost = r"C:\Users\grego\Documents\Captures d’écran\illiquidity_persistent_cost.png"
-    betas = r"C:\Users\grego\Documents\Captures d’écran\get_illiqBetas.png"
-
-
-
-    col1,col2 =st.columns(2)
-
-    with col1: 
-        st.image(image)
-
-    with col2: 
-        st.image(illiq_cost)
-
-    st.image(betas)
 
 with tab2: 
     
